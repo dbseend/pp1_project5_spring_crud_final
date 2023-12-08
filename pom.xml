@@ -8,6 +8,7 @@
     <name>pp1_project5_spring_crud_final Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+<!--        브랜치 예시-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
