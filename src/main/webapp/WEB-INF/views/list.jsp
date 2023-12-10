@@ -11,23 +11,29 @@
     </script>
 </head>
 <body>
-<h1>도서 목록 게시판</h1>
+<h1>상품 목록</h1>
 
+<form action="/products">
+    <label for="keyword">상품명: </label>
+    <input type="text" id="keyword" name="keyword">
+    <input type="submit" value="검색">
+</form>
 
-    <c:forEach items="${list}" var="u">
-            ${u.itemId}
-            ${u.itemName}
-            ${u.itemPrice}
-            ${u.itemQuantity}
-            ${u.itemTime}
-            ${u.category}
-            ${u.explanation}
-            ${u.photo}
-            ${u.regDate}
-            <a href="/products/update/${u.itemId}">Edit</a>
-            <a href= "javascript:delete_ok('${u.itemId}')">Delete</a>
-            <a href="/products/${u.itemId}">View</a><br/>
-    </c:forEach>
+<c:forEach items="${list}" var="u">
+    ${u.itemId}
+    ${u.itemName}
+    ${u.itemPrice}
+    ${u.itemQuantity}
+    ${u.itemTime}
+    ${u.category}
+    ${u.explanation}
+    ${u.photo}
+    ${u.regDate}
+    <a href="/products/update/${u.itemId}">Edit</a>
+    <a href= "javascript:delete_ok('${u.itemId}')">Delete</a>
+    <a href="/products/${u.itemId}">View</a><br/>
+</c:forEach>
+
 </table>
 <br/> <a href="/products/add">Add New Post</a>
 </body>

@@ -28,4 +28,7 @@ public class ProductDao {
     public void deleteProduct(Integer id) {
         sqlSession.delete("Product.deleteProduct", id);
     }
+    public List<ProductVO> getProductsByProductName(String keyword) {
+        return sqlSession.selectList("Product.getProductListByProductName", "%" + keyword + "%");
+    }
 }

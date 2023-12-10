@@ -22,4 +22,7 @@ mybatis-3-mapper.dtd">
     <select id="getProductList" resultType="product">
         select * from product order by item_id desc
     </select>
+    <select id="getProductListByProductName" resultType="product">
+        select * from product where item_name LIKE #{keyword};
+    </select>
 </mapper>

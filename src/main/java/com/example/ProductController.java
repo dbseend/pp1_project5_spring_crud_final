@@ -3,9 +3,11 @@ package com.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,15 @@ public class ProductController {
     ProductDao productDao;
 
     @GetMapping("/products")
-    public String getProducts(Model model) {
-        List<ProductVO> products = productDao.getProducts();
+    public String getProducts(@RequestParam(required = false) String keyword, Model model) {
+        List<ProductVO> products;
+        if (StringUtils.hasText(keyword)) {
+            products = productDao.getProductsByProductName(keyword);
+        } else {
+            products = productDao.getProducts();
+        }
 
         model.addAttribute("list", products);
-
 
         return "list";
     }
