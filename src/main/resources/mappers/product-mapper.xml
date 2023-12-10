@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/
+mybatis-3-mapper.dtd">
+<mapper namespace="Product">
+    <insert id="insertProduct">
+        insert into product (item_name, item_price, item_quantity, item_time, category, explanation, photo, regdate)
+        values
+        (#{itemName} , #{itemPrice} , #{itemQuantity} , #{itemTime}, #{category}, #{explanation}, #{photo}, #{regDate})
+    </insert>
+    <update id="updateProduct">
+        update product
+        set item_name=#{itemName}, item_price=#{itemPrice}, item_quantity=#{itemQuantity},
+        item_time=#{itemTime}, category=#{category}, explanation=#{explanation}, photo=#{photo}, regdate=#{regDate}
+        where item_id=#{itemId}
+    </update>
+    <delete id="deleteProduct">
+        delete from product where item_id=#{itemId}
+    </delete>
+    <select id="getProduct" resultType="product">
+        select * from product where item_id=#{itemId}
+    </select>
+    <select id="getProductList" resultType="product">
+        select * from product order by item_id desc
+    </select>
+</mapper>
