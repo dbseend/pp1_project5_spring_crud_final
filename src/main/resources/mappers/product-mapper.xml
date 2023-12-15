@@ -3,10 +3,15 @@
 mybatis-3-mapper.dtd">
 <mapper namespace="Product">
     <insert id="insertProduct">
-        insert into product (item_name, item_price, item_quantity, item_time, category, explanation, photo, regdate)
-        values
-        (#{itemName} , #{itemPrice} , #{itemQuantity} , #{itemTime}, #{category}, #{explanation}, #{photo}, #{regDate})
+        INSERT INTO product (
+        item_id, item_name, item_price, item_quantity, item_time, category, explanation, photo, regdate
+        )
+        VALUES (
+        #{itemId}, #{itemName}, #{itemPrice}, #{itemQuantity}, #{itemTime}, #{category}, #{explanation}, #{photo},
+        #{regDate}
+        )
     </insert>
+
     <update id="updateProduct">
         update product
         set item_name=#{itemName}, item_price=#{itemPrice}, item_quantity=#{itemQuantity},

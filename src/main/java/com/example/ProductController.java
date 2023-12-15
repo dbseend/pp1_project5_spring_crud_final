@@ -1,5 +1,7 @@
 package com.example;
 
+import lombok.extern.slf4j.Slf4j;
+import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,17 +21,20 @@ public class ProductController {
     @GetMapping("/products")
     public String getProducts(@RequestParam(required = false) String keyword, Model model) {
         List<ProductVO> products;
+
         if (StringUtils.hasText(keyword)) {
             products = productDao.getProductsByProductName(keyword);
         } else {
             products = productDao.getProducts();
         }
 
+        for (ProductVO product : products) {
+            System.out.println(product.getItemName());
+        }
         model.addAttribute("list", products);
 
         return "list";
     }
-
 
     @GetMapping("/products/{itemId}")
     public String getProducts(@PathVariable Integer itemId, Model model) {
@@ -41,11 +45,19 @@ public class ProductController {
         return "view";
     }
 
+    @GetMapping("/products/add")
+    public String addBoard() {
+        return "add";
+    }
+
+    @PostMapping("/products/addOk")
+    public String addBoard(ProductVO productVO) {
+        productDao.insertProduct(productVO);
+        return "redirect:/products";
+    }
+
 /*
     @GetMapping("/boards/{id}")
-
-
-
     public String getboard(@PathVariable Integer id, Model model) {
         BoardVO board = boardService.getBoard(id);
         model.addAttribute("board", board);
