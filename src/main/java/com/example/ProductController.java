@@ -26,9 +26,6 @@ public class ProductController {
             products = productDao.getProducts();
         }
 
-        for (ProductVO product : products) {
-            System.out.println(product.getItemName());
-        }
         model.addAttribute("list", products);
 
         return "list";

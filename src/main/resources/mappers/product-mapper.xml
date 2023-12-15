@@ -18,15 +18,19 @@ mybatis-3-mapper.dtd">
         item_time=#{itemTime}, category=#{category}, explanation=#{explanation}, photo=#{photo}, regdate=#{regDate}
         where item_id=#{itemId}
     </update>
+
     <delete id="deleteProduct">
         delete from product where item_id=#{itemId}
     </delete>
+
     <select id="getProduct" resultType="product">
         select * from product where item_id=#{itemId}
     </select>
+
     <select id="getProductList" resultType="product">
         select * from product order by item_id desc
     </select>
+
     <select id="getProductListByProductName" resultType="product">
         select * from product where item_name LIKE #{keyword};
     </select>
