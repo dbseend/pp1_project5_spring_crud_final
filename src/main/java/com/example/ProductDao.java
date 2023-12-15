@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,11 +29,19 @@ public class ProductDao {
     }
 
 
-
     public List<ProductVO> getProducts() {
-        return sqlSession.selectList("Product.getProductList");
+        List<ProductVO> tempList = sqlSession.selectList("Product.getProductList");
+        List<ProductVO> productVOList = new ArrayList<>();
+        for (int i = 0; i < tempList.size(); i++) {
+            if (tempList.get(i).getItemQuantity() == 0) {
+                int id = tempList.get(i).getItemId();
+                sqlSession.delete("Product.deleteProduct", id);
+            } else {
+                productVOList.add(tempList.get(i));
+            }
+        }
+        return productVOList;
     }
-
 
     public ProductVO getProduct(Integer id) {
         return sqlSession.selectOne("Product.getProduct", id);
