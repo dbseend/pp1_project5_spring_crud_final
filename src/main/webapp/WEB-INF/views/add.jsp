@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<h1>게시글 추가</h1>
+<h1>상품 추가</h1>
 
 <form action="addOk" method="POST">
     <label for="itemName">상품명:</label>
