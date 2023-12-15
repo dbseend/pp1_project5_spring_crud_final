@@ -14,7 +14,6 @@ public class ProductDao {
     @Autowired
     SqlSession sqlSession;
 
-
     public int insertProduct(ProductVO vo) {
         LocalDateTime currentTime = LocalDateTime.now();
         vo.setItemTime(currentTime);
@@ -22,12 +21,6 @@ public class ProductDao {
 
         return sqlSession.insert("Product.insertProduct", vo);
     }
-
-    public int purchaseProduct(ProductVO vo) {
-        vo.setItemQuantity(vo.getItemQuantity() - 1);
-        return sqlSession.update("Product.updateProduct", vo);
-    }
-
 
     public List<ProductVO> getProducts() {
         List<ProductVO> tempList = sqlSession.selectList("Product.getProductList");
@@ -47,11 +40,18 @@ public class ProductDao {
         return sqlSession.selectOne("Product.getProduct", id);
     }
 
-
-    public void deleteProduct(Integer id) {
-        sqlSession.delete("Product.deleteProduct", id);
+    public int purchaseProduct(ProductVO vo) {
+        vo.setItemQuantity(vo.getItemQuantity() - 1);
+        return sqlSession.update("Product.updateProduct", vo);
     }
 
+    public void updateProduct(Integer id) {
+        ProductVO productVO = sqlSession.selectOne("Product.getProduct", id);
+    }
+
+    public int deleteProduct(Integer id) {
+        return sqlSession.delete("Product.deleteProduct", id);
+    }
 
     public List<ProductVO> getProductsByProductName(String keyword) {
         return sqlSession.selectList("Product.getProductListByProductName", "%" + keyword + "%");
