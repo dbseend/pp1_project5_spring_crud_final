@@ -92,7 +92,14 @@
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="login/login" class="nav-item nav-link">로그인</a>
+                        <c:choose>
+                            <c:when test="${isLogin}">
+                                <a href="login/logout" class="nav-item nav-link">로그아웃</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="login/login" class="nav-item nav-link">로그인</a>
+                            </c:otherwise>
+                        </c:choose>
                         <a href="products/add" class="nav-item nav-link">상품등록</a>
                     </div>
                 </div>

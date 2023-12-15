@@ -19,13 +19,20 @@ public class ProductController {
     LoginInterceptor loginInterceptor;
 
     @GetMapping
-    public String getProducts(@RequestParam(required = false) String keyword, Model model) {
+    public String getProducts(@RequestParam(required = false) String keyword, Model model, HttpServletRequest request, HttpServletResponse response) {
         List<ProductVO> products;
 
-        if (StringUtils.hasText(keyword)) {
-            products = productDao.getProductsByProductName(keyword);
-        } else {
-            products = productDao.getProducts();
+        try {
+            boolean preHandleResult = loginInterceptor.preHandle(request, response, null);
+            model.addAttribute("isLogin", preHandleResult);
+
+            if (StringUtils.hasText(keyword)) {
+                products = productDao.getProductsByProductName(keyword);
+            } else {
+                products = productDao.getProducts();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
         model.addAttribute("list", products);
