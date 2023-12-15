@@ -20,9 +20,11 @@ public class ProductDao {
         return sqlSession.insert("Product.insertProduct", vo);
     }
 
-    public int updateProduct(ProductVO vo) {
+    public int purchaseProduct(ProductVO vo) {
+        vo.setItemQuantity(vo.getItemQuantity() - 1);
         return sqlSession.update("Product.updateProduct", vo);
     }
+
 
 
     public List<ProductVO> getProducts() {

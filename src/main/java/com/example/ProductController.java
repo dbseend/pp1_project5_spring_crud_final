@@ -28,9 +28,6 @@ public class ProductController {
             products = productDao.getProducts();
         }
 
-        for (ProductVO product : products) {
-            System.out.println(product.getItemName());
-        }
         model.addAttribute("list", products);
 
         return "list";
@@ -46,13 +43,20 @@ public class ProductController {
     }
 
     @GetMapping("/products/add")
-    public String addBoard() {
+    public String addProducts() {
         return "add";
     }
 
     @PostMapping("/products/addOk")
-    public String addBoard(ProductVO productVO) {
+    public String addProducts(ProductVO productVO) {
         productDao.insertProduct(productVO);
+        return "redirect:/products";
+    }
+
+    @PostMapping("/products/update/{id}")
+    public String updateProducts(@PathVariable Integer id, ProductVO productVO) {
+        productVO = productDao.getProduct(id);
+        productDao.purchaseProduct(productVO);
         return "redirect:/products";
     }
 
