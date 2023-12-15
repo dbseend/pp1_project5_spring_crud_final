@@ -92,8 +92,8 @@
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="login/login" class="nav-item nav-link">Login</a>
-                        <a href="products/add" class="nav-item nav-link">Register</a>
+                        <a href="login/login" class="nav-item nav-link">로그인</a>
+                        <a href="products/add" class="nav-item nav-link">상품등록</a>
                     </div>
                 </div>
             </nav>
