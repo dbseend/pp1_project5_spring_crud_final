@@ -55,47 +55,9 @@ public class ProductController {
     }
 
     @PostMapping("/products/update/{id}")
-    public String updateProducts(@PathVariable Integer id, ProductVO productVO) {
-        productVO = productDao.getProduct(id);
+    public String updateProducts(@PathVariable Integer id) {
+        ProductVO productVO = productDao.getProduct(id);
         productDao.purchaseProduct(productVO);
         return "redirect:/products";
     }
-
-/*
-    @GetMapping("/boards/{id}")
-    public String getboard(@PathVariable Integer id, Model model) {
-        BoardVO board = boardService.getBoard(id);
-        model.addAttribute("board", board);
-        return "view";
-    }
-
-    @GetMapping("/boards/delete/{id}")
-    public String deleteBoard(@PathVariable Integer id) {
-        boardService.deleteBoard(id);
-        return "redirect:/boards";
-    }
-
-    @GetMapping("/boards/add")
-    public String addBoard() {
-        return "add";
-    }
-
-    @PostMapping("/boards/add")
-    public String addBoard(BoardVO boardVO) {
-        boardService.insertBoard(boardVO);
-        return "redirect:/boards";
-    }
-
-    @GetMapping("/boards/update/{id}")
-    public String updateBoard(@PathVariable Integer id, Model model) {
-        model.addAttribute("board", boardService.getBoard(id));
-        return "update";
-    }
-
-    @PostMapping("/boards/update/{id}")
-    public String updateBoard(BoardVO boardVO) {
-        boardService.updateBoard(boardVO);
-        return "redirect:/boards";
-    }
-*/
 }

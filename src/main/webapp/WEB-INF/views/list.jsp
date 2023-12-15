@@ -151,11 +151,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-<<<<<<< HEAD
                                 <a href="products/${u.itemId}" class="btn btn-sm text-dark p-0"><i
-=======
-                                <a href="/products/${u.itemId}" class="btn btn-sm text-dark p-0"><i
->>>>>>> main
                                         class="fas fa-eye text-primary mr-1"></i>자세히 보기</a>
                             </div>
                         </div>
