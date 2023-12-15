@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+         pageEncoding="utf-8" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,18 +7,21 @@
 <body>
 <h1>게시글 추가</h1>
 
-<form action="/p233_22200461_3/boards/add" method="POST">
-    <label for="title">제목:</label>
-    <input type="text" id="title" name="title"/>
+<form action="addOk" method="POST">
+    <label for="itemName">상품명:</label>
+    <input type="text" id="itemName" name="itemName"/>
     <br>
-    <label for="content">내용:</label>
-    <input type="textarea" id="content" name="content"/>
+    <label for="itemPrice">가격:</label>
+    <input type="text" id="itemPrice" name="itemPrice"/>
     <br>
-    <label for="writer">작가:</label>
-    <input type="textarea" id="writer" name="writer"/>
+    <label for="itemQuantity">수량:</label>
+    <input type="text" id="itemQuantity" name="itemQuantity"/>
     <br>
     <label for="category">카테고리:</label>
-    <input type="textarea" id="category" name="category"/>
+    <input type="text" id="category" name="category"/>
+    <br>
+    <label for="explanation">설명:</label>
+    <textarea id="explanation" name="explanation"></textarea>
     <br>
     <input type="submit" value="작성">
 </form>
