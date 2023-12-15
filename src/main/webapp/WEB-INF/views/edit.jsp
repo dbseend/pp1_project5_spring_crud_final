@@ -7,7 +7,11 @@
 <body>
 <h1>상품 수정</h1>
 
+<<<<<<< HEAD
 <form action="../editOk" method="POST">
+=======
+<form action="editOk" method="POST">
+>>>>>>> main
   <label for="itemName">상품명:</label>
   <input type="text" id="itemName" name="itemName"/>
   <br>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 @Controller
@@ -71,30 +72,8 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editPost(@PathVariable int id, Model model, HttpServletRequest request, HttpServletResponse response) {
-        try {
-            if (!loginInterceptor.preHandle(request, response, null)) {
-                // 세션이 유효하지 않은 경우 로그인 페이지로 리다이렉트
-                return "redirect:/login/login";
-            }
-
-            // 세션이 유효한 경우에만 실행되는 코드
-            return "edit";
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    @PostMapping("/editOk")
-    public String updateProducts(ProductVO productVO) {
-        productDao.insertProduct(productVO);
-        return "redirect:/products";
-    }
-
-    @PostMapping("/purchase/{id}")
-    public String purchaseProducts(@PathVariable Integer id) {
+    @PostMapping("/products/update/{id}")
+    public String updateProducts(@PathVariable Integer id) {
         ProductVO productVO = productDao.getProduct(id);
         productDao.purchaseProduct(productVO);
         return "redirect:/products";
