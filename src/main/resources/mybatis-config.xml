@@ -7,6 +7,7 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <typeAlias alias="product" type="com.example.ProductVO" />
+        <typeAlias alias="product" type="com.example.ProductVO"/>
+        <typeAlias alias="User" type="com.example.UserVO"/>
     </typeAliases>
 </configuration>
