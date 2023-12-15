@@ -88,7 +88,6 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
@@ -115,8 +114,7 @@
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">SS</h1>
         <div class="d-inline-flex">
-            <p class="m-0"><a href="">Home</a></p>
-            <p class="m-0 px-2">-</p>
+           <p class="m-0 px-2">-</p>
             <p class="m-0">Shop</p>
         </div>
     </div>
@@ -160,7 +158,7 @@
                             <div class="card-footer d-flex justify-content-between bg-light border">
                                 <a href="products/${u.itemId}" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-eye text-primary mr-1"></i>자세히 보기</a>
-                                <a href="products/update/${u.itemId}" class="btn btn-sm text-dark p-0"><i
+                                <a href="products/edit/${u.itemId}" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-eye text-primary mr-1"></i>수정하기</a>
                                 <a href="products/delete/${u.itemId}" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-eye text-primary mr-1"></i>삭제하기</a>

@@ -88,7 +88,6 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
                     </div>
                 </div>
@@ -104,7 +103,6 @@
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">SS</h1>
         <div class="d-inline-flex">
-            <p class="m-0"><a href="">Home</a></p>
             <p class="m-0 px-2">-</p>
             <p class="m-0">Shop</p>
         </div>
@@ -118,7 +116,7 @@
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text" id="password">패스워드</span>
-        <input type="text" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <input type="password" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
     </div>
     <input type="submit" style="margin-left:85%" class="btn btn-primary" value="로그인">
 </form>
