@@ -92,7 +92,7 @@
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="" class="nav-item nav-link">Login</a>
+                        <a href="login/login" class="nav-item nav-link">Login</a>
                         <a href="products/add" class="nav-item nav-link">Register</a>
                     </div>
                 </div>
