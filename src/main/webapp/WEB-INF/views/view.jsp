@@ -135,7 +135,7 @@
             </div>
             <h3 class="font-weight-semi-bold mb-4">${product.itemPrice}원</h3>
             <p class="mb-4">${product.explanation}</p>
-            <form action="update/${product.itemId}" method="POST">
+            <form action="purchase/${product.itemId}" method="POST">
                 <!-- 폼 요소들 -->
                 <button type="submit">구매하기</button>
             </form>

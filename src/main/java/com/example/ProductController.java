@@ -4,23 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
+@RequestMapping("/products")
 public class ProductController {
     @Autowired
     ProductDao productDao;
     @Autowired
     LoginInterceptor loginInterceptor;
 
-    @GetMapping("/products")
+    @GetMapping("")
     public String getProducts(@RequestParam(required = false) String keyword, Model model) {
         List<ProductVO> products;
 
@@ -35,7 +33,7 @@ public class ProductController {
         return "list";
     }
 
-    @GetMapping("/products/{itemId}")
+    @GetMapping("/{itemId}")
     public String getProductDetails(@PathVariable Integer itemId, Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
             if (!loginInterceptor.preHandle(request, response, null)) {
@@ -52,7 +50,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/products/add")
+    @GetMapping("/add")
     public String addProducts(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (!loginInterceptor.preHandle(request, response, null)) {
@@ -67,14 +65,14 @@ public class ProductController {
         }
     }
 
-    @PostMapping("/products/addOk")
+    @PostMapping("/addOk")
     public String addProducts(ProductVO productVO) {
         productDao.insertProduct(productVO);
         return "redirect:/products";
     }
 
-    @GetMapping("/products/edit")
-    public String updateProducts(HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("/edit/{id}")
+    public String editPost(@PathVariable int id, Model model, HttpServletRequest request, HttpServletResponse response) {
         try {
             if (!loginInterceptor.preHandle(request, response, null)) {
                 // 세션이 유효하지 않은 경우 로그인 페이지로 리다이렉트
@@ -88,20 +86,21 @@ public class ProductController {
         }
     }
 
-    @PostMapping("/products/editOk")
+
+    @PostMapping("/editOk")
     public String updateProducts(ProductVO productVO) {
         productDao.insertProduct(productVO);
         return "redirect:/products";
     }
 
-    @PostMapping("/products/update/{id}")
-    public String updateProducts(@PathVariable Integer id) {
+    @PostMapping("/purchase/{id}")
+    public String purchaseProducts(@PathVariable Integer id) {
         ProductVO productVO = productDao.getProduct(id);
         productDao.purchaseProduct(productVO);
         return "redirect:/products";
     }
 
-    @GetMapping("/products/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deletePost(@PathVariable int id) {
         if (productDao.deleteProduct(id) != 0) {
             System.out.println("success");
