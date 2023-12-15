@@ -45,8 +45,10 @@ public class ProductDao {
         return sqlSession.update("Product.updateProduct", vo);
     }
 
-    public void updateProduct(Integer id) {
-        ProductVO productVO = sqlSession.selectOne("Product.getProduct", id);
+    public void updateProduct(ProductVO productVO) {
+        System.out.println(productVO.getItemName());
+        System.out.println(productVO.getItemId());
+        sqlSession.update("Product.updateProduct", productVO);
     }
 
     public int deleteProduct(Integer id) {
