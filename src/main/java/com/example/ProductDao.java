@@ -13,10 +13,12 @@ public class ProductDao {
     @Autowired
     SqlSession sqlSession;
 
+
     public int insertProduct(ProductVO vo) {
         LocalDateTime currentTime = LocalDateTime.now();
         vo.setItemTime(currentTime);
         vo.setRegDate(currentTime);
+
         return sqlSession.insert("Product.insertProduct", vo);
     }
 
@@ -31,13 +33,16 @@ public class ProductDao {
         return sqlSession.selectList("Product.getProductList");
     }
 
+
     public ProductVO getProduct(Integer id) {
         return sqlSession.selectOne("Product.getProduct", id);
     }
 
+
     public void deleteProduct(Integer id) {
         sqlSession.delete("Product.deleteProduct", id);
     }
+
 
     public List<ProductVO> getProductsByProductName(String keyword) {
         return sqlSession.selectList("Product.getProductListByProductName", "%" + keyword + "%");

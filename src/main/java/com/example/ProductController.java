@@ -1,7 +1,5 @@
 package com.example;
 
-import lombok.extern.slf4j.Slf4j;
-import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +26,9 @@ public class ProductController {
             products = productDao.getProducts();
         }
 
+        for (ProductVO product : products) {
+            System.out.println(product.getItemName());
+        }
         model.addAttribute("list", products);
 
         return "list";
